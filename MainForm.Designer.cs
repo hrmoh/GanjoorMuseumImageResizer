@@ -45,6 +45,10 @@ namespace GanjoorMuseumImageResizer
             this.lblTargetFolder = new System.Windows.Forms.Label();
             this.btnRun = new System.Windows.Forms.Button();
             this.lblCurrentFile = new System.Windows.Forms.Label();
+            this.lstUnsorted = new System.Windows.Forms.ListBox();
+            this.lstSorted = new System.Windows.Forms.ListBox();
+            this.lblAddPrefixToTarget = new System.Windows.Forms.Label();
+            this.txtAddPrefixToTarget = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // lblInputFolder
@@ -171,7 +175,7 @@ namespace GanjoorMuseumImageResizer
             // 
             // btnRun
             // 
-            this.btnRun.Location = new System.Drawing.Point(36, 268);
+            this.btnRun.Location = new System.Drawing.Point(36, 298);
             this.btnRun.Name = "btnRun";
             this.btnRun.Size = new System.Drawing.Size(493, 46);
             this.btnRun.TabIndex = 14;
@@ -182,17 +186,55 @@ namespace GanjoorMuseumImageResizer
             // lblCurrentFile
             // 
             this.lblCurrentFile.AutoSize = true;
-            this.lblCurrentFile.Location = new System.Drawing.Point(32, 329);
+            this.lblCurrentFile.Location = new System.Drawing.Point(32, 359);
             this.lblCurrentFile.Name = "lblCurrentFile";
             this.lblCurrentFile.Size = new System.Drawing.Size(91, 19);
             this.lblCurrentFile.TabIndex = 15;
             this.lblCurrentFile.Text = "Current File";
             // 
+            // lstUnsorted
+            // 
+            this.lstUnsorted.FormattingEnabled = true;
+            this.lstUnsorted.ItemHeight = 19;
+            this.lstUnsorted.Location = new System.Drawing.Point(36, 402);
+            this.lstUnsorted.Name = "lstUnsorted";
+            this.lstUnsorted.Size = new System.Drawing.Size(563, 270);
+            this.lstUnsorted.TabIndex = 16;
+            // 
+            // lstSorted
+            // 
+            this.lstSorted.FormattingEnabled = true;
+            this.lstSorted.ItemHeight = 19;
+            this.lstSorted.Location = new System.Drawing.Point(632, 402);
+            this.lstSorted.Name = "lstSorted";
+            this.lstSorted.Size = new System.Drawing.Size(614, 270);
+            this.lstSorted.TabIndex = 17;
+            // 
+            // lblAddPrefixToTarget
+            // 
+            this.lblAddPrefixToTarget.AutoSize = true;
+            this.lblAddPrefixToTarget.Location = new System.Drawing.Point(32, 256);
+            this.lblAddPrefixToTarget.Name = "lblAddPrefixToTarget";
+            this.lblAddPrefixToTarget.Size = new System.Drawing.Size(231, 19);
+            this.lblAddPrefixToTarget.TabIndex = 18;
+            this.lblAddPrefixToTarget.Text = "Add prefix to target file names:";
+            // 
+            // txtAddPrefixToTarget
+            // 
+            this.txtAddPrefixToTarget.Location = new System.Drawing.Point(269, 253);
+            this.txtAddPrefixToTarget.Name = "txtAddPrefixToTarget";
+            this.txtAddPrefixToTarget.Size = new System.Drawing.Size(100, 27);
+            this.txtAddPrefixToTarget.TabIndex = 19;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(144F, 144F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
-            this.ClientSize = new System.Drawing.Size(1280, 660);
+            this.ClientSize = new System.Drawing.Size(1280, 719);
+            this.Controls.Add(this.txtAddPrefixToTarget);
+            this.Controls.Add(this.lblAddPrefixToTarget);
+            this.Controls.Add(this.lstSorted);
+            this.Controls.Add(this.lstUnsorted);
             this.Controls.Add(this.lblCurrentFile);
             this.Controls.Add(this.btnRun);
             this.Controls.Add(this.btnTargetFolder);
@@ -235,6 +277,10 @@ namespace GanjoorMuseumImageResizer
         private System.Windows.Forms.Label lblTargetFolder;
         private System.Windows.Forms.Button btnRun;
         private System.Windows.Forms.Label lblCurrentFile;
+        private System.Windows.Forms.ListBox lstUnsorted;
+        private System.Windows.Forms.ListBox lstSorted;
+        private System.Windows.Forms.Label lblAddPrefixToTarget;
+        private System.Windows.Forms.TextBox txtAddPrefixToTarget;
     }
 }
 

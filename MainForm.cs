@@ -26,6 +26,8 @@ namespace GanjoorMuseumImageResizer
             txtMaxHeight.Text = Properties.Settings.Default.TargetImageMaxHeight.ToString();
 
             txtTargetFolder.Text = Properties.Settings.Default.TargetFolder;
+
+            txtAddPrefixToTarget.Text = Properties.Settings.Default.AddPrefixToTarget;
         }
 
         private void _UpdateImageNamePrefixLabel()
@@ -79,6 +81,12 @@ namespace GanjoorMuseumImageResizer
             string prefix = txtImageNamePrefix.Text;
             a = Path.GetFileNameWithoutExtension(a).Substring(prefix.Length);
             b = Path.GetFileNameWithoutExtension(b).Substring(prefix.Length);
+
+            while (a.Length < b.Length)
+                a = "0" + a;
+            while (b.Length < a.Length)
+                b = "0" + b;
+
             return int.Parse(a).CompareTo(int.Parse(b));
         }
 
@@ -92,11 +100,16 @@ namespace GanjoorMuseumImageResizer
             Properties.Settings.Default.InputFolder = txtInput.Text;
             Properties.Settings.Default.InputImageNamePrefix = txtImageNamePrefix.Text;
             Properties.Settings.Default.TargetFolder = txtTargetFolder.Text;
+            Properties.Settings.Default.AddPrefixToTarget = txtAddPrefixToTarget.Text;
             Properties.Settings.Default.Save();
 
 
             string[] files = Directory.GetFiles(txtInput.Text, "*.jpg");
+            lstUnsorted.Items.AddRange(files);
             Array.Sort(files, (a, b) => _inputImageNameCompare(a, b));
+            lstSorted.Items.AddRange(files);
+            if (MessageBox.Show("continue?", "?", MessageBoxButtons.YesNo) == DialogResult.No)
+                return;
             for (int fIndex = 0; fIndex < files.Length; fIndex++)
             {
                 string file = files[fIndex];
@@ -104,7 +117,7 @@ namespace GanjoorMuseumImageResizer
                 Application.DoEvents();
                 using (Image img = Image.FromFile(file))
                 {
-                    string targetFileName = Path.Combine(txtTargetFolder.Text, $"{fIndex.ToString().PadLeft(4, '0')}.jpg");
+                    string targetFileName = Path.Combine(txtTargetFolder.Text, $"{txtAddPrefixToTarget.Text}{fIndex.ToString().PadLeft(4, '0')}.jpg");
                     if (img.Width <= NormalImageMaxWidth && img.Height <= NormalImageMaxHeight)
                     {
                         File.Copy(file, targetFileName);

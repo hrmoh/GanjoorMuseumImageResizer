@@ -94,5 +94,17 @@ namespace GanjoorMuseumImageResizer.Properties {
                 this["TargetFolder"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string AddPrefixToTarget {
+            get {
+                return ((string)(this["AddPrefixToTarget"]));
+            }
+            set {
+                this["AddPrefixToTarget"] = value;
+            }
+        }
     }
 }
