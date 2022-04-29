@@ -145,5 +145,24 @@ namespace GanjoorMuseumImageResizer
 
             MessageBox.Show("finished!");
         }
+
+        private void btnReplace_Click(object sender, EventArgs e)
+        {
+            if(MessageBox.Show($"Are you sure you want to replace {txtSearchFor.Text} with {txtReplaceWith.Text} in input folder filenames (jpg)?", "confirm", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                string input = txtSearchFor.Text;
+                string output = txtReplaceWith.Text;
+                string[] files = Directory.GetFiles(txtInput.Text, "*.jpg");
+                foreach (var file in files)
+                {
+                    if(file.Contains(input))
+                    {
+                        File.Move(file, Path.Combine(Path.GetDirectoryName(file), Path.GetFileName(file).Replace(input, output)));
+                    }
+                }
+                MessageBox.Show("done!");
+            }
+
+        }
     }
 }
