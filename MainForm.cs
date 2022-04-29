@@ -79,6 +79,10 @@ namespace GanjoorMuseumImageResizer
         int _inputImageNameCompare(string a, string b)
         {
             string prefix = txtImageNamePrefix.Text;
+            string prefix1 = prefix.Length == 0 ? "" : Path.GetFileNameWithoutExtension(a).Substring(0, prefix.Length);
+            string prefix2 = prefix.Length == 0 ? "" : Path.GetFileNameWithoutExtension(b).Substring(0, prefix.Length);
+            if (prefix1 != prefix2)
+                return prefix1.CompareTo(prefix2);
             a = Path.GetFileNameWithoutExtension(a).Substring(prefix.Length);
             b = Path.GetFileNameWithoutExtension(b).Substring(prefix.Length);
 
